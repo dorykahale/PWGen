@@ -16,7 +16,7 @@ var confirmLowerCase;
 
 // Number of Characters prompt
 function generatePassword() {
-  var confirmLength = (prompt("Enter the amount of characters for your password length (8-128)!"));
+  var confirmLength = (prompt("Enter the amount of characters your password needs (8-128)!"));
 
   // Loop if answer is outside parameters 
   while(confirmLength <= 7 || confirmLength >= 129) {
@@ -27,18 +27,18 @@ function generatePassword() {
       alert("Your password will have " + confirmLength + " characters");
 
     // Parameter prompts
-    var confirmSymbol = confirm("Include symbols in your password? (Cancel for No - OK for Yes)");
-    var confirmNumericCharacter = confirm("Include numeric characters? (Cancel for No - OK for Yes)");    
-    var confirmLowerCase = confirm("Include lowercase characters? (Cancel for No - OK for Yes)");
-    var confirmUpperCase = confirm("Include uppercase characters? (Cancel for No - OK for Yes)");
+    var confirmSymbol = confirm("Would you like to include SYMBOLS in your password?");
+    var confirmNumericCharacter = confirm("How about NUMERIC characters?");    
+    var confirmLowerCase = confirm("LOWER CASE characters?");
+    var confirmUpperCase = confirm("UPPER CASE characters?");
 
       // If NO parameters are chosen prompt & action
       while (confirmUpperCase === false && confirmLowerCase === false && confirmSymbol === false && confirmNumericCharacter === false) {
-        alert("You must choose at least one parameter");
-        var confirmSymbol = confirm("Include symbols in your password? (Cancel for No - OK for Yes)");
-        var confirmNumericCharacter = confirm("Include numeric characters? (Cancel for No - OK for Yes)");    
-        var confirmLowerCase = confirm("Include lowercase characters? (Cancel for No - OK for Yes)");
-        var confirmUpperCase = confirm("Include uppercase characters? (Cancel for No - OK for Yes)");   
+        alert("You must choose at least one CHARACTER type");
+        var confirmSymbol = confirm("Would you like to include SYMBOLS in your password?");
+        var confirmNumericCharacter = confirm("How about NUMERIC characters?");    
+        var confirmLowerCase = confirm("LOWER CASE characters?");
+        var confirmUpperCase = confirm("UPPER CASE characters?");   
     } 
 
       // Assigns action to password parameters 
