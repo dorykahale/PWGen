@@ -1,20 +1,20 @@
-// Add event listener to generate button
+// Add Event Listener in generate button
 document.querySelector("#generate").addEventListener("click", writePassword);
 
-// Password characters arrays
-var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
+// Password Characters
+var symbol = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "=", "?", "/", ":", ";", "+"];
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 // Variable Declaration 
 var confirmLength = "";
-var confirmSpecialCharacter;
+var confirmSymbol;
 var confirmNumericCharacter;
 var confirmUpperCase;
 var confirmLowerCase;
 
-// Number of characters prompt
+// Number of Characters prompt
 function generatePassword() {
   var confirmLength = (prompt("Enter the amount of characters for your password length (8-128)!"));
 
@@ -26,16 +26,16 @@ function generatePassword() {
       // Confirm # of characters chosen
       alert("Your password will have " + confirmLength + " characters");
 
-    // Various parameter prompts
-    var confirmSpecialCharacter = confirm("Include Special Characters in your password? (Cancel for No - OK for Yes)");
+    // Parameter prompts
+    var confirmSymbol = confirm("Include symbols in your password? (Cancel for No - OK for Yes)");
     var confirmNumericCharacter = confirm("Include numeric characters? (Cancel for No - OK for Yes)");    
     var confirmLowerCase = confirm("Include lowercase characters? (Cancel for No - OK for Yes)");
     var confirmUpperCase = confirm("Include uppercase characters? (Cancel for No - OK for Yes)");
 
-      // If no parameters are chosen
-      while (confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+      // If NO parameters are chosen prompt & action
+      while (confirmUpperCase === false && confirmLowerCase === false && confirmSymbol === false && confirmNumericCharacter === false) {
         alert("You must choose at least one parameter");
-        var confirmSpecialCharacter = confirm("Include Special Characters in your password? (Cancel for No - OK for Yes)");
+        var confirmSymbol = confirm("Include symbols in your password? (Cancel for No - OK for Yes)");
         var confirmNumericCharacter = confirm("Include numeric characters? (Cancel for No - OK for Yes)");    
         var confirmLowerCase = confirm("Include lowercase characters? (Cancel for No - OK for Yes)");
         var confirmUpperCase = confirm("Include uppercase characters? (Cancel for No - OK for Yes)");   
@@ -45,8 +45,8 @@ function generatePassword() {
 
       var passwordCharacters = []
       
-    if (confirmSpecialCharacter) {
-      passwordCharacters = passwordCharacters.concat(specialChar)
+    if (confirmSymbol) {
+      passwordCharacters = passwordCharacters.concat(symbol)
     }
 
     if (confirmNumericCharacter) {
@@ -61,15 +61,13 @@ function generatePassword() {
       passwordCharacters = passwordCharacters.concat(alphaUpper)
     }
 
-      console.log(passwordCharacters)
-
-      // Final generated password as a string
-      var randomPassword = ""
+      // Final generated password
+      var randomPasswordGenerated = ""
       
       for (var i = 0; i < confirmLength; i++) {
-        randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+        randomPasswordGenerated = randomPasswordGenerated + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
       }
-      return randomPassword;
+      return randomPasswordGenerated;
 }
 
 // Places password in #password input
